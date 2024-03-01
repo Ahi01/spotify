@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/infrastructure/const.dart';
+import 'package:flutter_application_3/infrastructure/routes.dart';
 import 'package:flutter_application_3/infrastructure/styles.dart';
-import 'package:flutter_application_3/presentation/text_field.dart';
+import 'package:flutter_application_3/presentation/widgets/text_field.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/mini_button.dart';
 
@@ -94,7 +95,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
               child: MiniBtn(
                 onTap: () {
                   if (formKey.currentState?.validate() == true) {
-                    // Navigator.of(context).pushNamed(routeName)
+                    Navigator.of(context).pushNamed(AppRoutes.gender);
                   }
                 },
                 text: 'Next',

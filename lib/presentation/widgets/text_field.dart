@@ -1,16 +1,19 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:flutter_application_3/infrastructure/const.dart';
 import 'package:flutter_application_3/infrastructure/styles.dart';
 
 class CTextField extends StatefulWidget {
   const CTextField({
-    super.key,
+    Key? key,
+    this.prefixIcon,
+    required this.onChanged,
     this.fillColor = AppColors.greyDark,
     this.focusColor = AppColors.focusedField,
     this.hintText,
     this.cursorColor = Colors.white,
     required this.controller,
-    required this.onChanged,
     this.validator,
     this.keyboardType,
     this.suffixIcon,
@@ -18,7 +21,8 @@ class CTextField extends StatefulWidget {
     this.errorTextStyle,
     this.prefix = const SizedBox(width: 16),
     this.style,
-  });
+  }) : super(key: key);
+  final Widget? prefixIcon;
   final ValueChanged<String>? onChanged;
   final Color? fillColor;
   final Color? focusColor;
@@ -67,6 +71,7 @@ class _CTextFieldState extends State<CTextField> {
       valueListenable: _myFocusNotifier,
       builder: (_, isFocus, child) {
         return TextFormField(
+
           style: widget.style??TextStyles.texButton(),
           obscureText: widget.obscureText,
           keyboardType: widget.keyboardType,
@@ -75,7 +80,6 @@ class _CTextFieldState extends State<CTextField> {
               widget.validator != null ? (_) => widget.validator!(_) : null,
           focusNode: _myFocusNode,
           decoration: InputDecoration(
-          
             prefix: widget.prefix,
             errorStyle: widget.errorTextStyle,
             suffixIcon: widget.suffixIcon,

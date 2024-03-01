@@ -57,4 +57,14 @@ class TextStyles {
         fontWeight: fontWeight,
         color: color,
       );
+       static TextStyle searchHint({
+    double fontSize = 14,
+    FontWeight fontWeight = FontWeight.bold,
+    Color color = Colors.black,
+  }) =>
+      TextStyle(
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        color: color,
+      );
 }

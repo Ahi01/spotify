@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 
 class Images {
-  static const logo = 'assets/images/image70x70.png';
+ static const logo = 'assets/images/spotify.png';
+  static const google = 'assets/images/google.png';
   static const googleSvg = 'assets/images/google.svg';
-  static const f = 'assets/images/f.svg';
   static const verified = 'assets/images/verified.svg';
-  static const charlie = 'assets/images/charlie_puth.png';
-  static const edSheeran = 'assets/images/ed_sheeran.png';
-  static const weeknd = 'assets/images/the_weeknd.png';
-  static const restangle = 'assets/images/Rectangle.png';
-  static const restangle1 = 'assets/images/Rectangle1.png';
-  static const restangle2 = 'assets/images/Rectangle2.png';
-  static const sky1 = 'assets/images/skytour.png';
-  static const sky2 = 'assets/images/skytourg_2.png';
-  static const song1 = 'assets/images/song_person.png';
-  static const song2 = 'assets/images/Square.png';
-  static const song3 = 'assets/images/Square1.png';
+  static const f = 'assets/images/f.svg';
+  static const i1 = 'assets/images/1.png';
+  static const i2 = 'assets/images/2.png';
+  static const i3 = 'assets/images/3.png';
+  static const i01 = 'assets/images/01.svg';
+  static const i02 = 'assets/images/02.svg';
+  static const i001 = 'assets/images/001.svg';
+  static const i002 = 'assets/images/002.svg';
+  static const i003 = 'assets/images/003.svg';
 }
 
 class AppColors {
