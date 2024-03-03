@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_3/infrastructure/const.dart';
 import 'package:flutter_application_3/infrastructure/routes.dart';
 import 'package:flutter_application_3/infrastructure/styles.dart';
 import 'package:flutter_application_3/presentation/screens/auth/widgets/app_bar.dart';
 import 'package:flutter_application_3/presentation/widgets/wrap_item.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class GenderScreen extends StatefulWidget {
   const GenderScreen({super.key});
@@ -45,8 +47,12 @@ class _GenderScreenState extends State<GenderScreen> {
                     .map(
                       (e) => WrapItem(
                         text: e,
-                        onTap: () {
-                          Navigator.of(context).pushNamed(AppRoutes.artists);
+                        onTap: () async {
+                          final userBox = Hive.box(Boxes.userBox);
+                          await userBox.put(UserBox.gender.name, e);
+                          if (context.mounted) {
+                            Navigator.of(context).pushNamed(AppRoutes.artists);
+                          }
                         },
                       ),
                     )

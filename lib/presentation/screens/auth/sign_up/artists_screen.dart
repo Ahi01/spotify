@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/infrastructure/const.dart';
+import 'package:flutter_application_3/infrastructure/routes.dart';
 import 'package:flutter_application_3/infrastructure/styles.dart';
 import 'package:flutter_application_3/presentation/screens/auth/widgets/artists.dart';
 import 'package:flutter_application_3/presentation/screens/auth/widgets/mini_button.dart';
 import 'package:flutter_application_3/presentation/screens/auth/widgets/search_field.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class ArtistsScreen extends StatefulWidget {
   const ArtistsScreen({super.key});
@@ -42,40 +44,43 @@ class _ArtistsScreenState extends State<ArtistsScreen> {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 10),
-              Text(
-                'Choose 3 or more artists \nyou like',
-                style: TextStyles.textTitle(),
-              ),
-              const SizedBox(height: 16),
-              CSearchField(
-                cursorColor: Colors.black,
-                style: TextStyles.searchHint(),
-                controller: controller,
-                onChanged: (value) {
-                  setState(() {
-                    sortedArtists = artists
-                        .where((element) => element['name']
-                            .toLowerCase()
-                            .contains(value.toLowerCase()))
-                        .toList();
-                  });
-                },
-                hintStyle: TextStyles.searchHint(),
-                hintText: 'Search',
-                prefixIcon: const Icon(
-                  Icons.search,
-                  color: AppColors.black,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 10),
+                Text(
+                  'Choose 3 or more artists \nyou like',
+                  style: TextStyles.textTitle(),
                 ),
-              ),
-              const SizedBox(height: 16),
-              Expanded(
-                child: GridView.builder(
+                const SizedBox(height: 16),
+                CSearchField(
+                  cursorColor: Colors.black,
+                  style: TextStyles.searchHint(),
+                  controller: controller,
+                  onChanged: (value) {
+                    setState(() {
+                      sortedArtists = artists
+                          .where((element) => element['name']
+                              .toLowerCase()
+                              .contains(value.toLowerCase()))
+                          .toList();
+                    });
+                  },
+                  hintStyle: TextStyles.searchHint(),
+                  hintText: 'Search',
+                  prefixIcon: const Icon(
+                    Icons.search,
+                    color: AppColors.black,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                GridView.builder(
+                  shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, mainAxisSpacing: 22),
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 22,
+                      crossAxisSpacing: 5),
                   itemBuilder: (context, index) => ArtistItem(
                     name: sortedArtists[index]['name']!,
                     path: sortedArtists[index]['image']!,
@@ -92,16 +97,24 @@ class _ArtistsScreenState extends State<ArtistsScreen> {
                   ),
                   itemCount: sortedArtists.length,
                 ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: MiniBtn(
-                  onTap: () {},
-                  text: 'Next',
-                  enable: selectedArtists.length >= 3,
+                const SizedBox(height: 6),
+                Align(
+                  alignment: Alignment.center,
+                  child: MiniBtn(
+                    onTap: () async {
+                      final userBox = Hive.box(Boxes.userBox);
+                      await userBox.put(UserBox.artists.name, selectedArtists);
+                      if (context.mounted) {
+                        Navigator.of(context).pushNamed(AppRoutes.success,
+                            arguments: selectedArtists);
+                      }
+                    },
+                    text: 'Next',
+                    enable: selectedArtists.length >= 3,
+                  ),
                 ),
-              )
-            ],
+              ],
+            ),
           ),
         ),
       ),

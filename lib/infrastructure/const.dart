@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Images {
- static const logo = 'assets/images/spotify.png';
+  static const logo = 'assets/images/spotify.png';
   static const google = 'assets/images/google.png';
   static const googleSvg = 'assets/images/google.svg';
   static const verified = 'assets/images/verified.svg';
@@ -23,3 +23,9 @@ class AppColors {
   static const focusedField = Color.fromRGBO(167, 167, 167, 1);
   static const red = Color.fromRGBO(195, 44, 48, 1);
 }
+
+class Boxes {
+  static const String userBox = 'userBox';
+}
+
+enum UserBox { email, password, gender, artists }

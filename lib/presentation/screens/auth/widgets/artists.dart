@@ -23,9 +23,12 @@ class ArtistItem extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Image.asset(
-              path,
-              fit: BoxFit.cover,
+            SizedBox(
+              height: 90,
+              child: Image.asset(
+                path,
+                fit: BoxFit.cover,
+              ),
             ),
             const SizedBox(height: 4),
             Text(

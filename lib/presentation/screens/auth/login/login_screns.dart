@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_3/infrastructure/const.dart';
-import 'package:flutter_application_3/infrastructure/routes.dart';
 import 'package:flutter_application_3/infrastructure/styles.dart';
+import 'package:flutter_application_3/presentation/screens/auth/widgets/app_bar.dart';
+import 'package:flutter_application_3/presentation/screens/auth/widgets/mini_button.dart';
 import 'package:flutter_application_3/presentation/widgets/text_field.dart';
-import 'package:hive_flutter/hive_flutter.dart';
-import '../widgets/app_bar.dart';
-import '../widgets/mini_button.dart';
 
-class EmailScreen extends StatefulWidget {
-  const EmailScreen({super.key});
+class LoginScrenn extends StatefulWidget {
+  const LoginScrenn({super.key});
 
   @override
-  State<EmailScreen> createState() => _EmailScreenState();
+  State<LoginScrenn> createState() => _LoginScrennState();
 }
 
-class _EmailScreenState extends State<EmailScreen> {
-  final _controller = TextEditingController();
+class _LoginScrennState extends State<LoginScrenn> {
+  final _emailController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   bool enable = false;
   @override
   void dispose() {
-    _controller.dispose();
+    _emailController.dispose();
     super.dispose();
   }
 
@@ -52,7 +49,7 @@ class _EmailScreenState extends State<EmailScreen> {
                   }
                   return null;
                 },
-                controller: _controller,
+                controller: _emailController,
                 onChanged: (p0) {
                   if (p0.isNotEmpty) {
                     setState(() {
@@ -75,14 +72,10 @@ class _EmailScreenState extends State<EmailScreen> {
             Align(
               alignment: Alignment.center,
               child: MiniBtn(
-                onTap: () async {
-                  if (formKey.currentState?.validate() == true) {
-                    final userBox = Hive.box(Boxes.userBox);
-                    await userBox.put(UserBox.email.name, _controller.text);
-                    if (context.mounted) {
-                      Navigator.of(context).pushNamed(AppRoutes.password);
-                    }
-                  }
+                onTap: () {
+                  // if (formKey.currentState?.validate() == true) {
+                  //   Navigator.of(context).pushNamed(AppRoutes.password);
+                  // }
                 },
                 text: 'Next',
                 enable: enable,

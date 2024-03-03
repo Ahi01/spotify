@@ -42,7 +42,9 @@ class AuthScreen extends StatelessWidget {
               text: 'Continue with Facebook',
             ),
             const SizedBox(height: 11),
-            const ButtonText(),
+            ButtonText(
+              onTap: () {},
+            ),
             const SizedBox(height: 20),
           ],
         ),
