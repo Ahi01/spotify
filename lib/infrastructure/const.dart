@@ -14,6 +14,10 @@ class Images {
   static const i001 = 'assets/images/001.svg';
   static const i002 = 'assets/images/002.svg';
   static const i003 = 'assets/images/003.svg';
+  static const ir = 'assets/images/Rectangle.png';
+  static const Rectangle= 'assets/images/Rectangle01.png';
+
+
 }
 
 class AppColors {

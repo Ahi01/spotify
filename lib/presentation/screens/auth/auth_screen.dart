@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/infrastructure/const.dart';
+import 'package:flutter_application_3/infrastructure/routes.dart';
 import 'package:flutter_application_3/infrastructure/styles.dart';
 import 'package:flutter_application_3/presentation/screens/auth/widgets/auth_button.dart';
 import 'package:flutter_application_3/presentation/screens/auth/widgets/sign_up_button.dart';
@@ -43,7 +44,9 @@ class AuthScreen extends StatelessWidget {
             ),
             const SizedBox(height: 11),
             ButtonText(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushNamed(AppRoutes.login);
+              },
             ),
             const SizedBox(height: 20),
           ],

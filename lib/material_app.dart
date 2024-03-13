@@ -14,7 +14,7 @@ class App extends StatelessWidget {
       title: 'Flutter Demo',
       themeMode: ThemeMode.dark,
       theme: theme,
-      initialRoute: userBox.isEmpty ? '/' : AppRoutes.home,
+      initialRoute: AppRoutes.main,
       routes: appRoutes,
     );
   }

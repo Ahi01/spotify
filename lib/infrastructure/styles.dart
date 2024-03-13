@@ -8,6 +8,7 @@ class TextStyles {
       TextStyle(
         fontSize: fontSize,
         fontWeight: fontWeight,
+        color: Colors.white,
       );
   static TextStyle textGrey({
     double fontSize = 10,
@@ -41,11 +42,12 @@ class TextStyles {
   static TextStyle textTitle({
     double fontSize = 24,
     FontWeight fontWeight = FontWeight.bold,
+    color = Colors.white,
   }) =>
       TextStyle(
         fontSize: fontSize,
         fontWeight: fontWeight,
-        color: Colors.white,
+        color: color,
       );
   static TextStyle texButton({
     double fontSize = 14,
@@ -57,8 +59,8 @@ class TextStyles {
         fontWeight: fontWeight,
         color: color,
       );
-       static TextStyle searchHint({
-    double fontSize = 14,
+  static TextStyle searchHint({
+    double fontSize = 12,
     FontWeight fontWeight = FontWeight.bold,
     Color color = Colors.black,
   }) =>

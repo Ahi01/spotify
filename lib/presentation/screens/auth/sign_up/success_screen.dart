@@ -59,7 +59,7 @@ class SuccessScreen extends StatelessWidget {
             const SizedBox(height: 48),
             MiniBtn(
               onTap: () => Navigator.of(context).pushNamedAndRemoveUntil(
-                  AppRoutes.home, (Route route) => false),
+                  AppRoutes.main, (Route route) => false),
               text: 'Start Listening',
               enable: true,
             ),
